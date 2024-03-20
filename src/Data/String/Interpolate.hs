@@ -55,7 +55,7 @@ i = QuasiQuoter {
       return $ foldr lambda e [name | Abstraction name <- nodes]
       where
         lambda :: Name -> Exp -> Exp
-        lambda name e = LamE [VarP name] e
+        lambda name e = LamE [VisAP (VarP name)] e
 
         generateName :: Node () -> Q (Node Name)
         generateName (Abstraction ()) = Abstraction <$> newName "x"
